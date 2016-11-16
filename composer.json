@@ -1,0 +1,23 @@
+{
+  "name":        "ntarakan/rest-bundle",
+  "type":        "symfony-bundle",
+  "description": "Symfony Simle REST Bundle",
+  "keywords":    ["ntarakan", "rest", "simple"],
+  "homepage":    "https://github.com/ntarakan/RestBundle",
+  "license":     "MIT",
+  "authors": [
+    {
+      "name": "Nikolay Tarakanovskiy",
+      "email": "nikolay.tarakanovskiy@ya.ru",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-0": { "NT\\RestBundle\\": "" }
+  },
+  "target-dir": "NT/RestBundle"
+}

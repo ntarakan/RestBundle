@@ -1,0 +1,23 @@
+services:
+    nt_rest.json_view_response_listener:
+        class: NT\RestBundle\EventListener\JsonViewResponseListener
+        arguments: ["@annotation_reader", "@nt_rest.view_handler"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 1000 }
+            - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
+    nt_rest.cors_listener:
+        class: NT\RestBundle\EventListener\CORSListener
+        arguments: []
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 1000 }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+
+    nt_rest.exception_listener:
+        class: NT\RestBundle\EventListener\ExceptionListener
+        arguments: ["@nt_rest.view_handler"]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception,  method: onKernelException }
+
+    nt_rest.view_handler:
+        class: NT\RestBundle\Handler\ViewHandler
+        arguments: ["@jms_serializer"]
