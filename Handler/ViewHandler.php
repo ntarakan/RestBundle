@@ -24,7 +24,9 @@ class ViewHandler
     {
         $result = $this->serializer->toArray($view->getData(), $view->getSerializationContext());
 
-        return new JsonResponse($result, $view->getStatusCode());
+        $response = new Response($this->serializer->serialize($result, 'json'));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
 
