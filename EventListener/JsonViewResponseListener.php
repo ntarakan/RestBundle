@@ -44,6 +44,7 @@ class JsonViewResponseListener
         if ($configuration->getSerializerGroups()) {
             $context = $jsonView->getSerializationContext() ?: new SerializationContext();
             $context->setGroups($configuration->getSerializerGroups());
+            $context->setSerializeNull(true);
             $jsonView->setSerializationContext($context);
         }
         $context = $jsonView->getSerializationContext() ?: new SerializationContext();
