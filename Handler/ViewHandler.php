@@ -22,12 +22,8 @@ class ViewHandler
 
     public function handle(JsonView $view)
     {
-        $result = $this->serializer->toArray($view->getData(), $view->getSerializationContext());
-
-        $response = new Response($this->serializer->serialize($result, 'json'), $view->getStatusCode());
+        $response = new Response($this->serializer->serialize($view->getData(), 'json', $view->getSerializationContext()), $view->getStatusCode());
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
-
-
 }
