@@ -4,7 +4,7 @@ services:
         arguments: ["@annotation_reader", "@nt_rest.view_handler"]
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController, priority: 1000 }
-            - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
+            - { name: kernel.event_listener, event: kernel.view, method: onKernelView, priority: 1000 }
     nt_rest.cors_listener:
         class: NT\RestBundle\EventListener\CORSListener
         arguments: []
